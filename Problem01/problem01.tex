@@ -1,0 +1,88 @@
+\documentclass[]{amsart}
+
+\usepackage{amsmath}
+\usepackage{physics}
+
+\title{Problem Set 1 \\ \small{FYS4170}}
+
+\author{Sebastian G. Winther-Larsen}
+
+\begin{document}
+
+\maketitle
+
+\section{Tensor notation}
+
+\subsection{Index form}
+Some regular operations on index form.
+
+\begin{align*}
+(\nabla S)_i  &= \partial_i S \\
+(\nabla\cdot \vb{A})_i &= \partial_i \vb{A} \\
+(\nabla \times \vb{A})_i &= \epsilon_{ijk} \partial_j \vb{A} \\
+\trace{M} &= M^i_{\ j} \\
+M^T = (M_{ij})^T &= M_{ji}
+\end{align*}
+
+\subsection{Proof of 3D identities}
+
+\begin{align*}
+\nabla\cdot(\nabla\times\vb{A}) = \partial^i \epsilon_{ijk}\partial^j A^k = \epsilon_{ijk} \partial^i \partial^j A^k = 0
+\end{align*}
+The reasoning behind why this is zero is that when you change two indices in the Levi-Civita symbol, the sign changes. If any of the indices in the other symbols (in accordance with the Levi-Civita change), the sign does not change. One will end up with terms that cancel in pairs.
+\begin{align*}
+(\nabla\times(\nabla S))_i = \epsilon_{ijk} \partial^j \partial^k S = 0
+\end{align*}
+
+The same reasoning works here.
+
+\subsection{Are the equalities valid?}
+The following is true,
+\begin{align*}
+\partial_\mu x^\nu = \delta_\mu^{\ \nu}. 
+\end{align*}
+Where the delta is a rank two  tensor ("matrix"), with ones along the diagonal.
+
+The following is not true
+\begin{equation}
+\partial_\mu x^\mu = 1.
+\end{equation}
+It is quite easy to see why
+\begin{align*}
+\partial_\mu x^\mu = (\frac{\partial}{\partial x^0}, \frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3} ) \cdot (x^0, x^1, x^2, x^3) = 1 + 1 +1 +1 = 4
+\end{align*}
+
+The following is  true
+\begin{align*}
+\partial^\mu x^\nu = g^{\mu\nu}.
+\end{align*}
+Here is why
+\begin{align*}
+\partial^\mu x^\nu = g^{\mu\rho}\partial_{\rho}x^{\nu} = g^{\mu\rho}\delta_\rho^{\ \nu} = g^{\mu\nu}.
+\end{align*}
+
+This is OK
+\begin{align*}
+T_{\alpha \ \gamma}^{\ \beta} = g^{\beta\gamma}T_{\alpha\gamma\mu} = g^{\gamma\beta}T_{\alpha\gamma\mu}.
+\end{align*}
+The metric raises $\gamma$ and the metric is its own transpose (and inverse). No worries.
+
+This is not OK.
+\begin{align*}
+T_{\alpha \ \beta}^{\ \beta} = g_{\alpha\mu}g^{\beta\alpha}T^{\mu}_{\ \alpha\beta}.
+\end{align*}
+Some indices are reused and rules are violated. We need to change some letters
+\begin{align*}
+T_{\alpha \ \beta}^{\ \beta} = g_{\alpha\mu}g^{\beta\rho}T^{\mu}_{\ \rho\beta}.
+\end{align*}
+
+\subsection{Constructing stuff}
+All independent Lorentz scalars from two four-vectors A and B:
+\begin{align*}
+A^\mu B_\mu \quad A^\mu B^\mu \quad B^\mu B^\mu.
+\end{align*}
+
+All independent Lorentz scalars from a rank two tensor T is the trace
+
+
+\end{document}

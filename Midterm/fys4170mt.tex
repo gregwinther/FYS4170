@@ -64,7 +64,7 @@ and has the following properties
 
 \begin{align}
 (\gamma^5)^\dagger &= \gamma^5, \label{eq:hermitian_gamma}\\
-(\gamma^5)^2 &= 1, \\
+(\gamma^5)^2 &= 1, \label{eq:gamma5sq} \\
 \{\gamma^5, \gamma^\mu \} &= 0 \label{eg:gamma5anti_comm}.
 \end{align}
 
@@ -83,7 +83,7 @@ In this particular case $g^{\mu\nu}$ is a matrix element, not the metric, and ca
 \Tr[\gamma^\mu\gamma^\nu] = 4g^{\mu\nu}.
 \end{equation}
 
-\subsection{b}
+\subsection*{b}
 
 The trace of the product of two gamma matrices with the fifth gamma matrix is,
 \begin{align}
@@ -99,5 +99,22 @@ Here we have first inserted $\mathbbm{1} = \gamma^0\gamma^0$, then the anticommu
 \Tr|\gamma^\mu\gamma^\nu\gamma^5] = 0.
 \end{equation}
 
+\subsection*{c}
+
+The trace of an odd number of gamma matrices is always zeros. Here is a proof for three gamma matrices
+
+\begin{align}
+\Tr[\gamma^\mu\gamma^\nu\gamma^\rho] = &\Tr[\gamma^5\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho] \\
+  = -&\Tr[\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^5] \\
+  = -&\Tr[\gamma^5\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho] \\
+  = -&\Tr[\gamma^\mu\gamma^\nu\gamma^\rho],
+\end{align}
+where first the property in \autoref{eq:gamma5sq} is employed, then three anticommutations from \autoref{eg:gamma5anti_comm} and the cyclic property of the trace. Adding $\Tr[\gamma^\mu\gamma^\nu\gamma^\rho]$ similar to before gives $2\Tr[\gamma^\mu\gamma^\nu\gamma^\rho] = 0$ and we end up with,
+
+\begin{equation}
+\Tr[\gamma^\mu\gamma^\nu\gamma^\rho] = 0.
+\end{equation}
+
+This proof holds for any odd number of gamma matrices because the number of commutation relation ``switches'' needed will then also be odd, yielding the desired minus sign.
 
  \end{document}

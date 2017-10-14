@@ -3,12 +3,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[]{hyperref}
 \usepackage[]{amsmath}
+\DeclareMathOperator{\Tr}{Tr}
+\usepackage[]{bbm}
 \usepackage[]{physics}
 \usepackage[]{graphicx}
 
-
-\title[FYS4170: Take-home Exam]{[COOL TITLE] \\
-   \hrulefill \small{ FYS4170: Introductory Quantum Field Theory } \hrulefill}
+\title[FYS4170: Take-home Exam]{Take-home Exam \\
+   \hrulefill \small{ FYS4170: Quantum Field Theory } \hrulefill}
    
  \author[Candidate numer]{Candidate number: [?????]}
  \date{\today}
@@ -16,5 +17,56 @@
  \begin{document}
  
 \maketitle
+
+\section{Trace of Dirac Matrix Products}
+
+The Dirac gamma matrices are in the chiral representation given in $2\times 2$ block form as,
+
+\begin{equation}
+\gamma^0 = \begin{pmatrix}
+0 & 1 \\ 1 & 0
+\end{pmatrix}; \quad
+\gamma^i = \begin{pmatrix}
+0 & \sigma^i \\ \sigma & 0
+\end{pmatrix},
+\end{equation}
+
+where $\sigma^i$ are the Pauli sigma matrices,
+
+\begin{equation}
+\sigma^1 = \begin{pmatrix}
+0 &  1 \\ 1 & 0
+\end{pmatrix},
+\quad
+\sigma^2 = \begin{pmatrix}
+0 & -i \\ i & 0
+\end{pmatrix},
+\quad
+\sigma^3 = \begin{pmatrix}
+1 & 0 \\ 0 & -1
+\end{pmatrix}.
+\end{equation}
+
+The gamma matrices satisfy the anti-commutation relations
+
+\begin{equation}
+\label{eq:gamma_anti_comm}
+\{\gamma^\mu, \gamma^\nu\} \equiv \gamma^\mu \gamma^\nu = 2g^{\mu\nu} \times \mathbbm{1}.
+\end{equation}
+
+\subsection*{a}
+
+The trace of the product of two gamma matrices can be evaluated using the anti-commutator relation and the cyclic property of the trace of a matrix product,
+
+\begin{align}
+\Tr[\gamma^\mu \gamma^\nu] &= \Tr[2g^{\mu\nu} \times \mathbbm{1} - \gamma^\nu\gamma^\mu] \\
+   &= 2g^{\mu\nu} \Tr \mathbbm{1} - \Tr[\gamma^\nu\gamma^\mu] \label{eq:g_is_elem} \\
+   &= 8g^{\mu\nu} - \Tr[\gamma^\mu\gamma^\nu] \label{eq:trace_cyclic1}.
+\end{align}
+In this particular case $g^{\mu\nu}$ is a matrix element, not the metric, and can therefore be moved outside the trace operator as in \ref{eq:g_is_elem}. In \ref{eq:trace_cyclic1} the cyclic property of the trace is employed. This yields
+
+\begin{equation}
+\Tr[\gamma^\mu\gamma^\nu] = 4g^{\mu\nu}.
+\end{equation}
 
  \end{document}

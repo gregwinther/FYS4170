@@ -9,7 +9,7 @@
 \usepackage[]{graphicx}
 
 \title[FYS4170: Take-home Exam]{Take-home Exam \\
-   \hrulefill \small{ FYS4170: Quantum Field Theory } \hrulefill}
+   \hrulefill \small{ FYS4170: Quantum Field Theory }\hrulefill}
    
  \author[Candidate numer]{Candidate number: [?????]}
  \date{\today}
@@ -87,11 +87,12 @@ In this particular case $g^{\mu\nu}$ is a matrix element, not the metric, and ca
 
 The trace of the product of two gamma matrices with the fifth gamma matrix is,
 \begin{align}
-\Tr[\gamma^\mu\gamma^\nu\gamma^5] = &\Tr[\gamma^0\gamma^0\gamma^\mu\gamma^\nu\gamma^5] \\
-  = -&\Tr[ \gamma^0\gamma^5\gamma^0 \gamma^\mu \gamma^\nu]  \\
-  = -&\Tr[\gamma^\mu\gamma^\nu\gamma^0\gamma^5\gamma^0]  \\
-  = -&\Tr[\gamma^\mu\gamma^\nu(\gamma^5)^\dagger] \\
-  = -&\Tr[\gamma^\mu\gamma^\nu\gamma^5] .
+\Tr[\gamma^\mu\gamma^\nu\gamma^5] 
+  &= \ \ \ \Tr[\gamma^0\gamma^0\gamma^\mu\gamma^\nu\gamma^5] \\
+  &= -\Tr[ \gamma^0\gamma^5\gamma^0 \gamma^\mu \gamma^\nu]  \\
+  &= -\Tr[\gamma^\mu\gamma^\nu\gamma^0\gamma^5\gamma^0]  \\
+  &= -\Tr[\gamma^\mu\gamma^\nu(\gamma^5)^\dagger] \\
+  &= -\Tr[\gamma^\mu\gamma^\nu\gamma^5] .
 \end{align}
 Here we have first inserted $\mathbbm{1} = \gamma^0\gamma^0$, then the anticommutator relation from \autoref{eg:gamma5anti_comm} is employed three times. The cyclic property of the trace is employed and finally $\gamma^0\gamma^\mu\gamma^0 = \gamma^\dagger$ and the fact that $\gamma^5$ is Hermitian (\autoref{eq:hermitian_gamma}). Adding $\Tr[\gamma^\mu\gamma^\nu\gamma^5]$ to both sides gives $2\Tr[\gamma^\mu\gamma^\nu\gamma^5] = 0$ and we have that
 
@@ -104,10 +105,11 @@ Here we have first inserted $\mathbbm{1} = \gamma^0\gamma^0$, then the anticommu
 The trace of an odd number of gamma matrices is always zeros. Here is a proof for three gamma matrices
 
 \begin{align}
-\Tr[\gamma^\mu\gamma^\nu\gamma^\rho] = &\Tr[\gamma^5\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho] \\
-  = -&\Tr[\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^5] \\
-  = -&\Tr[\gamma^5\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho] \\
-  = -&\Tr[\gamma^\mu\gamma^\nu\gamma^\rho],
+\Tr[\gamma^\mu\gamma^\nu\gamma^\rho] 
+  &=\ \ \ \Tr[\gamma^5\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho] \\
+  &= -\Tr[\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^5] \\
+  &= -\Tr[\gamma^5\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho] \\
+  &= -\Tr[\gamma^\mu\gamma^\nu\gamma^\rho],
 \end{align}
 where first the property in \autoref{eq:gamma5sq} is employed, then three anticommutations from \autoref{eg:gamma5anti_comm} and the cyclic property of the trace. Adding $\Tr[\gamma^\mu\gamma^\nu\gamma^\rho]$ similar to before gives $2\Tr[\gamma^\mu\gamma^\nu\gamma^\rho] = 0$ and we end up with,
 
@@ -117,4 +119,54 @@ where first the property in \autoref{eq:gamma5sq} is employed, then three antico
 
 This proof holds for any odd number of gamma matrices because the number of commutation relation ``switches'' needed will then also be odd, yielding the desired minus sign.
 
- \end{document}
+\subsection*{d}
+
+The trace of the product of four gamma matrices and the special $\gamma^5$ is zero in \emph{nearly} all cases. In fact, this is the first non-vanishing trace involving $\gamma^5$. Let us first try the same kind of trick as before,
+
+\begin{align}
+\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^5] 
+   &= \ \ \ \Tr[\gamma^0\gamma^0\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^5] \\
+   &= -\Tr[\gamma^0\gamma^5\gamma^0\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma] \\
+   &= -\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^0\gamma^5\gamma^0] \\
+   &= -\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^5],
+\end{align}
+
+which in the same way as in the previous cases yields
+
+\begin{equation}
+\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^5] = 0.
+\end{equation}
+
+However, the result is something else if all of Dirac's gamma matrices are represented in the trace. Take for instance $(\mu\nu\rho\sigma) = (0123)$,
+
+\begin{align}
+\Tr[\gamma^0\gamma^1\gamma^2\gamma^3\gamma^5]
+   &= \ \ i\Tr[\gamma^0\gamma^1\gamma^2\gamma^3\gamma^0\gamma^1\gamma^2\gamma^3] \\
+   &= - i\Tr[\gamma^0\gamma^0\gamma^1\gamma^2\gamma^3\gamma^1\gamma^2\gamma^3] \\
+   &= - i\Tr[\gamma^1\gamma^1\gamma^2\gamma^3\gamma^2\gamma^3] \\
+   &= \ \ i\Tr[\gamma^2\gamma^3\gamma^2\gamma^3] \\
+   &= - i\Tr[\gamma^2\gamma^2\gamma^3\gamma^3] \\
+   &= - i\Tr[\mathbbm{1}] = -i4.
+\end{align}
+
+A computation with the indices of two adjacent gamma matrices intechanged.
+
+\begin{align}
+\Tr[\gamma^0\gamma^1\gamma^3\gamma^2\gamma^5]
+   &= \ \ i\Tr[\gamma^0\gamma^1\gamma^3\gamma^2\gamma^0\gamma^1\gamma^2\gamma^3] \\
+   &= - i\Tr[\gamma^0\gamma^0\gamma^1\gamma^3\gamma^2\gamma^1\gamma^2\gamma^3] \\
+   &= - i\Tr[\gamma^1\gamma^1\gamma^3\gamma^2\gamma^2\gamma^3] \\
+   &= \ \ i\Tr[\gamma^3\gamma^2\gamma^2\gamma^3] \\
+   &= - i\Tr[\gamma^3\gamma^3] \\
+   &= \ \  i\Tr[\mathbbm{1}] = i4.
+\end{align}
+
+The initial ordering of the for gamma matrices will change the sign compared to the initial case, because the number of commutation relation switches needed to complete the computation will change as well. This means that if two adjacent indices are interchanged, the sign will change. If two indices with another index between them are changed the sign stays the same - equivalent to two adjacent index exchanges. In other words, an even number of permutations will leave the sign unchanged, while an odd number of permutations will not. For all other cases, where two or more of the indices are equal the answer is zero. The result must therefore be proportional to the four-dimensional Levi-Civita symbol, as well as $-i4$ from the trial computation. In conclusion,
+
+\begin{equation}
+\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^5] = -i4\epsilon^{\mu\nu\rho\sigma}.
+\end{equation}
+
+
+
+\end{document}

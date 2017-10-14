@@ -25,7 +25,7 @@ The Dirac gamma matrices are in the chiral representation given in $2\times 2$ b
 \begin{equation}
 \gamma^0 = \begin{pmatrix}
 0 & 1 \\ 1 & 0
-\end{pmatrix}; \quad
+\end{pmatrix}, \quad
 \gamma^i = \begin{pmatrix}
 0 & \sigma^i \\ \sigma & 0
 \end{pmatrix},
@@ -51,8 +51,22 @@ The gamma matrices satisfy the anti-commutation relations
 
 \begin{equation}
 \label{eq:gamma_anti_comm}
-\{\gamma^\mu, \gamma^\nu\} \equiv \gamma^\mu \gamma^\nu = 2g^{\mu\nu} \times \mathbbm{1}.
+\{\gamma^\mu, \gamma^\nu\} \equiv \gamma^\mu \gamma^\nu = 2g^{\mu\nu} \times \mathbbm{1},
 \end{equation}
+
+The fifth gamma matrix is defined by
+\begin{equation}
+\gamma^5 \equiv i \gamma^0 \gamma^1 \gamma^2 \gamma^3 
+= -\frac{i}{4!}\epsilon^{\mu\nu\rho\sigma}\gamma_\mu\gamma_\nu\gamma_\rho\gamma_\sigma
+\end{equation}
+
+and has the following properties
+
+\begin{align}
+(\gamma^5)^\dagger &= \gamma^5, \label{eq:hermitian_gamma}\\
+(\gamma^5)^2 &= 1, \\
+\{\gamma^5, \gamma^\mu \} &= 0 \label{eg:gamma5anti_comm}.
+\end{align}
 
 \subsection*{a}
 
@@ -68,5 +82,22 @@ In this particular case $g^{\mu\nu}$ is a matrix element, not the metric, and ca
 \begin{equation}
 \Tr[\gamma^\mu\gamma^\nu] = 4g^{\mu\nu}.
 \end{equation}
+
+\subsection{b}
+
+The trace of the product of two gamma matrices with the fifth gamma matrix is,
+\begin{align}
+\Tr[\gamma^\mu\gamma^\nu\gamma^5] = &\Tr[\gamma^0\gamma^0\gamma^\mu\gamma^\nu\gamma^5] \\
+  = -&\Tr[ \gamma^0\gamma^5\gamma^0 \gamma^\mu \gamma^\nu]  \\
+  = -&\Tr[\gamma^\mu\gamma^\nu\gamma^0\gamma^5\gamma^0]  \\
+  = -&\Tr[\gamma^\mu\gamma^\nu(\gamma^5)^\dagger] \\
+  = -&\Tr[\gamma^\mu\gamma^\nu\gamma^5] .
+\end{align}
+Here we have first inserted $\mathbbm{1} = \gamma^0\gamma^0$, then the anticommutator relation from \autoref{eg:gamma5anti_comm} is employed three times. The cyclic property of the trace is employed and finally $\gamma^0\gamma^\mu\gamma^0 = \gamma^\dagger$ and the fact that $\gamma^5$ is Hermitian (\autoref{eq:hermitian_gamma}). Adding $\Tr[\gamma^\mu\gamma^\nu\gamma^5]$ to both sides gives $2\Tr[\gamma^\mu\gamma^\nu\gamma^5] = 0$ and we have that
+
+\begin{equation}
+\Tr|\gamma^\mu\gamma^\nu\gamma^5] = 0.
+\end{equation}
+
 
  \end{document}

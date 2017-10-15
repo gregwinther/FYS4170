@@ -167,6 +167,40 @@ The initial ordering of the for gamma matrices will change the sign compared to 
 \Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^5] = -i4\epsilon^{\mu\nu\rho\sigma}.
 \end{equation}
 
+\section{Scattering Cross Section}
 
+A central result in quantum field theory is
+
+\begin{equation}
+\label{eq:infinitesimal_cross_section}
+d\sigma = \frac{1}{4vE_\mathcal{A}E_\mathcal{B}} \abs{\mathcal{M}}^2 d\Pi_n,
+\end{equation}
+
+\subsection*{a}
+In \autoref{eq:infinitesimal_cross_section}, $d\sigma$ is the infinitesimal cross section, whereas the cross section is defined by 
+\begin{equation}
+\sigma \equiv \frac{\text{Number of scattering events}}{\rho_\mathcal{A}\ell_\mathcal{A}\rho_\mathcal{B}\ell_\mathcal{B} A},
+\end{equation}
+for two colliding bunches of particles $A$  and $B$. $\rho_\mathcal{A}$ and $\rho_\mathcal{B}$ are the densities of the particle bunches, $\ell_\mathcal{A}$ and $\ell_\mathcal{B}$ are the lengths of the bunches of particles, and $A$ is the cross-sectional area common to the two bunches. The cross-section can be thought of as the probability of scattering events. It has area as unit, as it gives a measure of an area that two particles need to be within to interact. When colliding two beams of particles with well-defined momenta, one can express the likelihood of any particular final state in terms of the cross section. The relative velocity of the two particle bunches is given by $v = \abs{v_\mathcal{A} - v_\mathcal{B}}$ in the lab frame, while $E_\mathcal{A}$ and $E_\mathcal{B}$ are the energies of the particle beams.
+
+$\mathcal{M}$ is the matrix element of the interesting part of the $S$(cattering) matrix ($S = \mathbbm{1} + i T$) after the four-momentum conservation term is factored out,
+
+\begin{equation}
+\bra{\{\vb{p}_f\}}iT\ket{\{\vb{k}_i\}} 
+\equiv {}_{\text{out}}\braket{\{\vb{p}_f\}}{\{\vb{k}_i\}}_\text{in}
+= i\mathcal{M}(2\pi)^4 \delta^{(4)}(\Sigma k_i - \Sigma p_f),
+\end{equation}
+
+where $\{\vb{p}_i$ and $\{\vb{p}_f\}$ are the sets of \emph{in} and \emph{out} states, respectively. $\mathcal{M}$ is interesting because it describes the actual scattering. If the particles in question does not interact at all, $S$ is simply the identity operator - the final state will be equal to the initial state.
+
+Lastly, the infinitesimal relativistic invariant $n$-body final-state momenta is (a tongue twister) given by
+
+\begin{equation}
+d\Pi_n = \left(\frac{d^3p_f}{(2\pi)^3} \frac{1}{2E_f}\right) (2\pi)^4 \delta^(4).
+\end{equation}
+
+It contains both a normalising factor (????) and the four-momentum conservation factor.
+
+\subsection*{b}
 
 \end{document}

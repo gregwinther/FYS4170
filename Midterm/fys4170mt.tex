@@ -28,7 +28,7 @@ The Dirac gamma matrices are in the chiral representation given in $2\times 2$ b
 0 & 1 \\ 1 & 0
 \end{pmatrix}, \quad
 \gamma^i = \begin{pmatrix}
-0 & \sigma^i \\ \sigma & 0
+0 & \sigma^i \\ -\sigma^i & 0
 \end{pmatrix},
 \end{equation}
 
@@ -235,7 +235,7 @@ The Euler-Lagrange equations for $\bar{\psi}$ is
 
 \begin{align}
 \partial_\mu \left(\frac{\mathcal{L}}{\partial (\partial_\mu \bar{\psi})} \right) - \frac{\partial \mathcal{L}}{\partial \bar{\psi}} &= 0 \\
-0 - (i\gamma^\mu\partial_\mu - m \psi) &= 0	\\
+0 - (i\gamma^\mu\partial_\mu\psi - m \psi) &= 0	\\
 \gamma^\mu\partial_\mu \psi = -im\psi& \label{eq:psibarEQM},
 \end{align}
 
@@ -244,7 +244,7 @@ and for $\psi$,
 \begin{align}
 \partial_\mu \left(\frac{\mathcal{L}}{\partial (\partial_\mu \bar{\psi})} \right) - \frac{\partial \mathcal{L}}{\partial \bar{\psi}} &= 0 \\
 \partial_\mu i\bar{\psi} \gamma^\mu - (-m\bar{\psi}) = 0 \\
-\partial_\mu \bar{\psi} \gamma^\mu = - im\bar{\psi}& \label{eq:psiEQM}.
+\partial_\mu \bar{\psi} \gamma^\mu = im\bar{\psi}& \label{eq:psiEQM}.
 \end{align}
 
 Inserting \autoref{eq:psibarEQM} and \autoref{eq:psiEQM} into \autoref{eq:current1} yields

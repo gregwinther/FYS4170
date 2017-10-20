@@ -8,6 +8,7 @@
 \usepackage[]{bbm}
 \usepackage[]{physics}
 \usepackage[]{graphicx}
+\usepackage[]{cancel}
 
 \title[FYS4170: Take-home Exam]{Take-home Exam \\
    \hrulefill \small{ FYS4170: Quantum Field Theory }\hrulefill}
@@ -326,5 +327,36 @@ The expression for the spin-averaged squared matrix element can be simplified to
 \begin{equation}
 \abs{\bar{\mathcal{M}}}^2 = 2e^4 \left[\frac{p\cdot k'}{p\cdot k} + \frac{p \cdot k}{p \cdot k'} + \left(1 + \frac{m_e^2}{p\cdot k} - \frac{m_e^2}{p\cdot k'} \right) - 1 \right]
 \end{equation}
+
+\subsection{a}
+
+In the lab frame, where the electron is initially at rest, we have the following momenta:
+\begin{align}
+k  &= (\omega, \omega\hat{z}) \\
+p  &= (m, \vb{0}) \\
+k' &= (\omega', \omega' \sin \theta, 0, \omega' \cos \theta) \\
+p' &= (E', \vb{p}')
+\end{align}
+
+where $\omega$ is the photon energy and $\theta$ is the scattering angle of the photon. In $\abs{\mathcal{M}}^2$, one can contract the four-momenta to
+\begin{align}
+p \cdot k \   &= m \omega \label{eq:dot1}\\
+p \cdot k' &= m \omega' \label{eq:dot2}
+\end{align}
+
+\subsection{b}
+We now want to express $\omega'$ in terms of $\omega$ and $\theta$. Remembering the Lorentz invariance of the square of the four momentum ($p^2 = p'^2 = m^2$) and employing conservation of momentum we get
+\begin{equation}
+m^2 = (p')^2 = (p + k - k')^2 = p^2 + 2p(k-k') + (k -k')^2 = p^2 + 2p(k-k') + \cancel{k^2} - 2k\cdot k' + \cancel{k'^2}
+\end{equation}
+employing \autoref{eq:dot1} and \autoref{eq:dot2}, computing $k\cdot k'$ and that $p^2 = m^2$ gives
+\begin{align}
+  m^2 &= m^2 + 2m(\omega - \omega') - 2\omega\omega'(1 - \cos \theta) \nonumber \\
+       0 &= m\omega -m\omega' - \omega\omega' + \omega\omega'\cos \theta \nonumber \\
+       0 &=m\omega - \omega'(m + \omega - \omega\cos\theta) \nonumber \\
+       \omega' &= \frac{m\omega}{m + \omega - \omega\cos\theta} \nonumber \\
+       \omega' &= \frac{\omega}{1 + \frac{m}{\omega}(1-\cos\theta)}
+\end{align}
+
 
 \end{document}

@@ -253,6 +253,64 @@ Inserting \autoref{eq:psibarEQM} and \autoref{eq:psiEQM} into \autoref{eq:curren
 \partial_u j^\mu_A = im\bar{\psi}\gamma^5\psi + \bar{\psi}\gamma^5 im \psi = 2im\bar{\psi}\gamma^5 \psi,
 \end{equation}
 
-and we see that if $m=0$ that the axial vector current  must be conserved.
+and we see that if $m=0$ that the axial vector current  must be conserved. In order to calculate the charge, we split the axial vector current up into a left-handed and right-handed part by a linear combination.
+
+\begin{equation}
+\label{eq:rightandleftcurrent}
+j_A^\mu = j_R^\mu - j_L^\mu = \bar{\psi} \gamma^\mu\left(\frac{1 + \gamma^5}{2} \right)\psi - \bar{\psi} \gamma^\mu \left( \frac{1 - \gamma^5}{2}\right) \psi = \bar{\psi}\gamma^\mu\gamma^5\psi.
+\end{equation}
+
+These left- and right-handed current are individually  conserved. The Dirac equation in terms of left-handed and right-handed fields ($\psi_L$ and $\psi_R$) is
+
+\begin{equation}
+(i\gamma^\mu \partial_\mu - m ) \psi = \begin{pmatrix}
+-m & i(\partial_0 + \vb{\sigma} \cdot \nabla) \\
+i(\partial_0 - \vb{\sigma} \cdot \nabla) & -m
+\end{pmatrix}
+\begin{pmatrix}
+\psi_L \\ \psi_R
+\end{pmatrix}
+= 0 
+\end{equation}
+
+We see that when $m=0$, we get a set of decouple equations
+\begin{align}
+i(\partial_0 - \vb{\sigma} \cdot \nabla) \psi_L &= 0 \\
+i(\partial_0 + \vb{\sigma} \cdot \nabla) \psi_R &= 0.
+\end{align}
+
+It will therefore be alright to compute the charge from the right- and left-handed current from \autoref{eq:rightandleftcurrent} separetely. 
+But I will not be doing this!?
+
+Brute it..
+
+\begin{align}
+Q_A  =& \int d^3x j_A^0 = \int d^3 x\bar{\psi}  \gamma^0 \gamma^5 \psi =  \int d^3x \psi^\dagger \gamma^5 \psi \\
+		=& \int d^3 x \int \frac{d^3p}{(2\pi)^3} \int \frac{d^3q}{(2\pi)^3} \frac{1}{2 \sqrt{E_{\vb{p}} E_{\vb{q}}}}  \nonumber \\
+		&\times \sum_s \left( a_{\vb{p}}^s u^s(p) e^{-ip\cdot x} + b_{\vb{p}}^{s\dagger} v^s(p) e^{ip\cdot x} \right) ^\dagger 
+		\gamma^5
+		\sum_r \left(a_{\vb{q}}^ru^r(q)e^{-iq\cdot x} + b_{\vb{q}}^{r\dagger}v^r(q) e^{iq\cdot x}  \right) \\
+		=& \int d^3 x \int \frac{d^3p}{(2\pi)^3} \int \frac{d^3q}{(2\pi)^3} \frac{1}{2 \sqrt{E_{\vb{p}} E_{\vb{q}}}} \sum_{sr}
+		\big(
+		a_{\vb{p}}^{s\dagger} a_{\vb{q}}^r u^{s\dagger}(p) \gamma^5 u^r(q) e^{ix\cdot (p - q)} + \nonumber \\
+		&b_{\vb{p}}^{s} b_{\vb{q}}^{r\dagger} v^{s\dagger}(p) \gamma^5 u^r(q) e^{ix\cdot (q - p)}
+		+a_{\vb{p}}^{s\dagger} b_{\vb{q}}^{r\dagger} u^{s\dagger}(p) \gamma^5 v^r(q) e^{ix\cdot (p + q)}
+		+b_{\vb{p}}^{s} a_{\vb{q}}^r v^{s\dagger}(p) \gamma^5 u^r(q) e^{-ix\cdot (p + q)}
+		\big) \\
+		=& \int \frac{d^3p}{(2\pi)^3} \int d^3q \frac{1}{2 \sqrt{E_{\vb{p}} E_{\vb{q}}}} \sum_{sr}
+		\big(
+		a_{\vb{p}}^{s\dagger} a_{\vb{q}}^r u^{s\dagger}(p) \gamma^5 u^r(q) e^{it(E_{\vb{p}} - E_{\vb{q}})} \delta^{(3)}(\vb{p}-\vb{q}) + \nonumber \\
+		&b_{\vb{p}}^{s} b_{\vb{q}}^{r\dagger} v^{s\dagger}(p) \gamma^5 u^r(q) e^{it(E_{\vb{p}} - E_{\vb{q}})} \delta^{(3)}(\vb{p}-\vb{q})
+		+a_{\vb{p}}^{s\dagger} b_{\vb{q}}^{r\dagger} u^{s\dagger}(p) \gamma^5 v^r(q) e^{it(E_{\vb{p}} + E_{\vb{q}})} \delta^{(3)}(\vb{p} +\vb{q}) \nonumber \\
+		+&b_{\vb{p}}^{s} a_{\vb{q}}^r v^{s\dagger}(p) \gamma^5 u^r(q) e^{it(E_{\vb{p}} + E_{\vb{q}})} \delta^{(3)}(\vb{p} + \vb{q})
+		\big) \\
+		&= \int \frac{d^3p}{(2\pi)^32E_{\vb{p}}} \sum_{sr	}
+		\big(
+		a_{\vb{p}}^{s\dagger} a_{\vb{q}}^r u^{s\dagger}(p) \gamma^5 u^r(q) 
+		+b_{\vb{p}}^{s} b_{\vb{q}}^{r\dagger} v^{s\dagger}(p) \gamma^5 u^r(q)
+		+a_{\vb{p}}^{s\dagger} b_{-\vb{p}}^{r\dagger} u^{s\dagger}(\vb{p}) \gamma^5 v^r(-\vb{p}) \nonumber \\
+		&+b_{\vb{p}}^{s} a_{-\vb{p}}^r v^{s\dagger}(\vb{p}) \gamma^5 u^r(-\vb{p}) 
+		\big)
+\end{align}
 
 \end{document}

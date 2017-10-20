@@ -306,11 +306,38 @@ Q_A  =& \int d^3x j_A^0 = \int d^3 x\bar{\psi}  \gamma^0 \gamma^5 \psi =  \int d
 		\big) \\
 		&= \int \frac{d^3p}{(2\pi)^32E_{\vb{p}}} \sum_{sr	}
 		\big(
-		a_{\vb{p}}^{s\dagger} a_{\vb{q}}^r u^{s\dagger}(p) \gamma^5 u^r(q) 
-		+b_{\vb{p}}^{s} b_{\vb{q}}^{r\dagger} v^{s\dagger}(p) \gamma^5 u^r(q)
+		a_{\vb{p}}^{s\dagger} a_{\vb{p}}^r u^{s\dagger}(p) \gamma^5 u^r(p) 
+		+b_{\vb{p}}^{s} b_{\vb{p}}^{r\dagger} v^{s\dagger}(p) \gamma^5 u^r(p)
 		+a_{\vb{p}}^{s\dagger} b_{-\vb{p}}^{r\dagger} u^{s\dagger}(\vb{p}) \gamma^5 v^r(-\vb{p}) \nonumber \\
 		&+b_{\vb{p}}^{s} a_{-\vb{p}}^r v^{s\dagger}(\vb{p}) \gamma^5 u^r(-\vb{p}) 
 		\big)
 \end{align}
+
+We have
+
+\begin{align*}
+v^{s\dagger}(\vb{p}) \gamma^5 u^r(-\vb{p}) &= \begin{pmatrix}
+\eta^{s\dagger} \sqrt{p\cdot \sigma} & -\eta^{s\dagger} \sqrt{p\cdot\bar{\sigma}}
+\end{pmatrix}
+\begin{pmatrix}
+-1 & 0 \\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+i\sqrt{p\cdot\sigma} \xi^{r} \\
+i\sqrt{p\cdot\bar{\sigma}} \xi^{r}
+\end{pmatrix} \\
+&= -i (p\cdot\sigma + p\cdot\bar{\sigma}) \eta^{s\dagger} \xi^r 
+  = -i (E_{\vb{p}} - \vb{p} \cdot \vb{\sigma} + E_{\vb{p}} + \vb{p} \cdot \vb{\sigma} )  \eta^{s\dagger} \xi^r \\
+&= -i2E_{\vb{p}}\eta^{s\dagger}\xi^r,
+\end{align*}
+
+similarly,
+
+\begin{equation*}
+u^{s\dagger} (\vb{p}) \gamma^5 v^r(-\vb{p}) = -i2E_{\vb{p}}
+\end{equation*}
+
+
 
 \end{document}

@@ -208,7 +208,22 @@ It contains both a normalising factor (????) and the four-momentum conservation 
 
 \subsection*{a}
 
+The invariant amplitude $\mathcal{M}$ is given by the formula
+\begin{equation}
+\bra{\vb{p}_1 \vb{p}_2 \dots} iT \ket{\vb{k}_{\mathcal{B}\vb{k}_{\mathcal{A}}}} = i \mathcal{M} (2\pi)^4 \delta^{(4)}(k_i - k_f) 
+= \bra{f}T\left\{\text{exp}{-i\int dt H_I} \right\} \ket{i},
+\end{equation}
+where $T$ is the time-ordering operator.
+
+The general algorithm to calculate the quantity $\mathcal{M}$ from a given interaction Hamiltonian in momentum space is
+\begin{enumerate}
+\item Contract external states with internal operators.
+\item Contract remaining internal operators (propagators)
+\item Amputate diagrams (on-shell inertial momenta).
+\end{enumerate}
+
 \subsection*{b}
+
 
 \section{Current Conservation and Charge of a Dirac field}
 The axial vector current is defined by

@@ -288,71 +288,43 @@ i(\partial_0 - \vb{\sigma} \cdot \nabla) & -m
 = 0 
 \end{equation}
 
-We see that when $m=0$, we get a set of decouple equations
+We see that when $m=0$, we get a set of decoupled equations
 \begin{align}
 i(\partial_0 - \vb{\sigma} \cdot \nabla) \psi_L &= 0 \\
 i(\partial_0 + \vb{\sigma} \cdot \nabla) \psi_R &= 0.
 \end{align}
 
-It will therefore be alright to compute the charge from the right- and left-handed current from \autoref{eq:rightandleftcurrent} separetely. 
-But I will not be doing this!?
+It will therefore be alright to compute the charge from the right- and left-handed current from \autoref{eq:rightandleftcurrent} separetely.  To be precise, one can look at one component of the Weyl spinor representation of $\psi$ at a time and employ the following eigenvalue relation
 
-Brute it..
+\begin{equation}
+\gamma^5 \psi_{L/R} = \mp \psi_{L/R}.
+\end{equation}
 
+We get
 \begin{align}
-Q_A  =& \int d^3x j_A^0 = \int d^3 x\bar{\psi}  \gamma^0 \gamma^5 \psi =  \int d^3x \psi^\dagger \gamma^5 \psi \\
-		=& \int d^3 x \int \frac{d^3p}{(2\pi)^3} \int \frac{d^3q}{(2\pi)^3} \frac{1}{2 \sqrt{E_{\vb{p}} E_{\vb{q}}}}  \nonumber \\
-		&\times \sum_s \left( a_{\vb{p}}^s u^s(p) e^{-ip\cdot x} + b_{\vb{p}}^{s\dagger} v^s(p) e^{ip\cdot x} \right) ^\dagger 
-		\gamma^5
-		\sum_r \left(a_{\vb{q}}^ru^r(q)e^{-iq\cdot x} + b_{\vb{q}}^{r\dagger}v^r(q) e^{iq\cdot x}  \right) \\
-		=& \int d^3 x \int \frac{d^3p}{(2\pi)^3} \int \frac{d^3q}{(2\pi)^3} \frac{1}{2 \sqrt{E_{\vb{p}} E_{\vb{q}}}} \sum_{sr}
-		\big(
-		a_{\vb{p}}^{s\dagger} a_{\vb{q}}^r u^{s\dagger}(p) \gamma^5 u^r(q) e^{ix\cdot (p - q)} + \nonumber \\
-		&b_{\vb{p}}^{s} b_{\vb{q}}^{r\dagger} v^{s\dagger}(p) \gamma^5 u^r(q) e^{ix\cdot (q - p)}
-		+a_{\vb{p}}^{s\dagger} b_{\vb{q}}^{r\dagger} u^{s\dagger}(p) \gamma^5 v^r(q) e^{ix\cdot (p + q)}
-		+b_{\vb{p}}^{s} a_{\vb{q}}^r v^{s\dagger}(p) \gamma^5 u^r(q) e^{-ix\cdot (p + q)}
-		\big) \\
-		=& \int \frac{d^3p}{(2\pi)^3} \int d^3q \frac{1}{2 \sqrt{E_{\vb{p}} E_{\vb{q}}}} \sum_{sr}
-		\big(
-		a_{\vb{p}}^{s\dagger} a_{\vb{q}}^r u^{s\dagger}(p) \gamma^5 u^r(q) e^{it(E_{\vb{p}} - E_{\vb{q}})} \delta^{(3)}(\vb{p}-\vb{q}) + \nonumber \\
-		&b_{\vb{p}}^{s} b_{\vb{q}}^{r\dagger} v^{s\dagger}(p) \gamma^5 u^r(q) e^{it(E_{\vb{p}} - E_{\vb{q}})} \delta^{(3)}(\vb{p}-\vb{q})
-		+a_{\vb{p}}^{s\dagger} b_{\vb{q}}^{r\dagger} u^{s\dagger}(p) \gamma^5 v^r(q) e^{it(E_{\vb{p}} + E_{\vb{q}})} \delta^{(3)}(\vb{p} +\vb{q}) \nonumber \\
-		+&b_{\vb{p}}^{s} a_{\vb{q}}^r v^{s\dagger}(p) \gamma^5 u^r(q) e^{it(E_{\vb{p}} + E_{\vb{q}})} \delta^{(3)}(\vb{p} + \vb{q})
-		\big) \\
-		&= \int \frac{d^3p}{(2\pi)^32E_{\vb{p}}} \sum_{sr	}
-		\big(
-		a_{\vb{p}}^{s\dagger} a_{\vb{p}}^r u^{s\dagger}(p) \gamma^5 u^r(p) 
-		+b_{\vb{p}}^{s} b_{\vb{p}}^{r\dagger} v^{s\dagger}(p) \gamma^5 u^r(p)
-		+a_{\vb{p}}^{s\dagger} b_{-\vb{p}}^{r\dagger} u^{s\dagger}(\vb{p}) \gamma^5 v^r(-\vb{p}) \nonumber \\
-		&+b_{\vb{p}}^{s} a_{-\vb{p}}^r v^{s\dagger}(\vb{p}) \gamma^5 u^r(-\vb{p}) 
-		\big)
+j_L^\mu &= \begin{pmatrix}
+\bar{\psi}_L & \bar{\psi_R}
+\end{pmatrix}\gamma^\mu \left(\frac{1 - \gamma^5}{2}\right) 
+\begin{pmatrix}
+\psi_L \\
+\psi_R
+\end{pmatrix} = \bar{\psi}_L \gamma^\mu \psi_L \\
+j_R^\mu &= \begin{pmatrix}
+\bar{\psi}_L & \bar{\psi_R}
+\end{pmatrix}\gamma^\mu \left(\frac{1 + \gamma^5}{2}\right) 
+\begin{pmatrix}
+\psi_L \\
+\psi_R
+\end{pmatrix} = \bar{\psi}_R \gamma^\mu \psi_R
 \end{align}
 
-We have
 
-\begin{align*}
-v^{s\dagger}(\vb{p}) \gamma^5 u^r(-\vb{p}) &= \begin{pmatrix}
-\eta^{s\dagger} \sqrt{p\cdot \sigma} & -\eta^{s\dagger} \sqrt{p\cdot\bar{\sigma}}
-\end{pmatrix}
-\begin{pmatrix}
--1 & 0 \\
-0 & 1
-\end{pmatrix}
-\begin{pmatrix}
-i\sqrt{p\cdot\sigma} \xi^{r} \\
-i\sqrt{p\cdot\bar{\sigma}} \xi^{r}
-\end{pmatrix} \\
-&= -i (p\cdot\sigma + p\cdot\bar{\sigma}) \eta^{s\dagger} \xi^r 
-  = -i (E_{\vb{p}} - \vb{p} \cdot \vb{\sigma} + E_{\vb{p}} + \vb{p} \cdot \vb{\sigma} )  \eta^{s\dagger} \xi^r \\
-&= -i2E_{\vb{p}}\eta^{s\dagger}\xi^r,
-\end{align*}
+\section{Complex Scalar Fields and ``Photons''}
 
-similarly,
-
-\begin{equation*}
-u^{s\dagger} (\vb{p}) \gamma^5 v^r(-\vb{p}) = -i2E_{\vb{p}}
-\end{equation*}
-
-
+\section{Compton Scattering}
+The expression for the spin-averaged squared matrix element can be simplified to
+\begin{equation}
+\abs{\bar{\mathcal{M}}}^2 = 2e^4 \left[\frac{p\cdot k'}{p\cdot k} + \frac{p \cdot k}{p \cdot k'} + \left(1 + \frac{m_e^2}{p\cdot k} - \frac{m_e^2}{p\cdot k'} \right) - 1 \right]
+\end{equation}
 
 \end{document}

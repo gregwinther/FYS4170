@@ -11,6 +11,7 @@
 \usepackage[]{cancel}
 \usepackage[]{tikz}
 \usepackage[]{tikz-feynman}
+\usepackage[offset=1.2em]{simpler-wick}
 
 \title[FYS4170: Take-home Exam]{Take-home Exam \\
    \hrulefill \small{ FYS4170: Quantum Field Theory }\hrulefill}
@@ -324,26 +325,73 @@ j_R^\mu &= \begin{pmatrix}
 
 \section{Complex Scalar Fields and ``Photons''}
 
+The interaction of a complex scalar field $\phi$ is interacting with massless bosons (``photons'') $B^\gamma$. The interaction is described by the following interaction Lagrangian,
 
-\feynmandiagram [vertical=f1 to f2] {
-	i1 -- [fermion] o -- [fermion] i2,
-	f1 -- [photon] o -- [photon] f2,
+\begin{equation}
+\mathcal{L}_{\text{Int}} = g^2 B_\mu B^\mu \abs{\phi}^2 + ig B_\mu (\phi\partial^\mu\phi^* - \phi^* \partial^\mu \phi).
+\end{equation}
+
+\subsection{a}
+
+We wish to compute the amplitude of $\phi\phi^* \rightarrow \gamma\gamma$, two scalar particles annihilating into two photons, to lowest order in $g$.
+
+\begin{equation}
+i\mathcal{M} \hat{=} \bra{\gamma\gamma}T\left\{\text{exp}\left(-i\int_{-T}^T dt H_I \right) \right\} \ket{\phi\phi^*}_{\substack{\text{connected,}\\ \text{amputated}}} 
+\end{equation}
+
+where $H_I = -\int d^x \mathcal{L}_{\text{Int}}$. So,
+
+\begin{align*}
+i \mathcal{M} = &\bra{\gamma\gamma} T \left\{\text{exp} \left( i \int d^4x g^2 B_\mu B^\mu \phi^* \phi + ig B_\mu (\phi \partial^\mu \phi^* - \phi^*\partial^\mu \phi) \right) \right\} \ket{\phi\phi^*} \\
+	= &\bra{\gamma\gamma}T \left\{\text{ext}(i\int d^4xg^2B_\mu B^\mu \phi\phi^*)\ \text{ext} (ig \int d^4xB_\mu \phi \partial^\mu \phi^*)\ \text{ext} (-ig \int d^4xB_\mu \phi^* \partial^\mu \phi) \right\}\ket{\phi\phi^*}.
+\end{align*}
+
+Performing an expansion to lowest order of the exponential factors in $g$ yields,
+
+\begin{align*}
+i\mathcal{M} &= \bra{\gamma\gamma} T \big\{
+		\left(\mathbbm{1} + ig^2 \int d^4x B_\mu B^\mu\phi\phi^* + \dots \right)
+		\left(\mathbbm{1} + ig  \int d^4x B_\mu \phi \partial^\mu \phi^* + \dots \right) \\
+		& \quad \times		
+		\left(\mathbbm{1} - ig   \int d^4x B_\mu \phi \partial^\mu \phi^* + \dots  \right)		
+		\big\}
+		\ket{\phi\phi^*} \\
+		&= \bra{\gamma\gamma} \mathbbm{1} \ket{\psi\psi^*} 
+		+ \wick{\langle \c1 \gamma \c2 \gamma | ig^2 \int d^4x \c1 B_\mu \c2 B^\mu \c3 \phi^* \c4 \phi | \c4 \psi \c3 \psi^* \rangle } \\
+		&\ \ + \wick{\langle\c1\gamma\c2\gamma|g^2 \int d^4x \c2 B_\mu \phi\partial^\mu \c3 \phi^* \c1 B_\nu \c4 \phi^* \c5 \partial^\nu \c3 \phi |\c5 \psi \c4 \psi^*\rangle} \\
+		&\ \ + \bra{\gamma\gamma}T\big\{ ig \int d^4x B_\mu \phi \partial \phi^* \big\} \ket{\psi\psi^*} \\
+		&\ \ + \bra{\gamma\gamma}T\big\{ -ig \int d^4x B_\mu \phi^* \partial \phi^ \big\} \ket{\psi\psi^*}  + \dots.
+\end{align*} 
+
+The two last terms will not be fully contracted and is therefore ignored, terms that are in higher of second order in $g$ are also ignored. The two contracted terms leads to the following three Feynman diagrams.
+
+\begin{align*}
+i\mathcal{M} =&
+\feynmandiagram [vertical=f1 to f2, large, baseline=(current bounding box.center)] {
+	i2 [particle=$\phi$]-- [charged scalar, edge label=$p_1$] o -- [charged scalar, edge label=$p_2$] i1 [particle=$\phi^*$],
+	o -- [photon, momentum=$k_1$] f1 [particle=$B_\mu$], 
+	o -- [photon, momentum=$k_2$] f2 [particle=$B_\nu$],
 };
-
-\feynmandiagram [vertical=a to b] { 
- 	i1 -- [fermion] a -- [photon] i2, 
- 	a -- [fermion] b,
-	f1 -- [photon] b -- [fermion] f2,
++ 
+\feynmandiagram [vertical=o to p, baseline=(current bounding box.center)] { 
+ 	i1 [particle=$\phi$] -- [charged scalar, edge label=$p_1$] o -- [photon, momentum=$k_1$] f1 [particle=$B_\mu$],
+ 	p -- [charged scalar, edge label=$p_2$] i2 [particle=$\phi^*$],
+ 	o -- [charged scalar, edge label=$p_1-k_1$] p,
+ 	p -- [photon, momentum=$k_2$] f2 [particle=$B_\nu$],	
+ 	f1 -- [draw = none] f2,
+ 	i1 -- [draw = none] i2,
+}; \\
+&+ \qquad
+\feynmandiagram [vertical=o to p, baseline=(current bounding box.center)] { 
+ 	i1 [particle=$\phi$] -- [charged scalar, edge label=$p_1$] o -- [photon, momentum=$k_2$] f1 [particle=$B_\nu$],
+ 	p -- [charged scalar, edge label=$p_2$] i2 [particle=$\phi^*$],
+ 	o -- [charged scalar, edge label=$p_1-k_2$] p,
+ 	p -- [photon, momentum=$k_1$] f2 [particle=$B_\mu$],	
+ 	f1 -- [draw = none] f2,
+ 	i1 -- [draw = none] i2,
 };
+\end{align*}
 
-\feynmandiagram [vertical=a to b] {
-	i1 -- [fermion] a -- [photon] i2,
-	a -- [fermion] b,
-	b -- [photon] o,
-	o -- [photon] f1,
-	a -- [photon] o,
-	o -- [photon] f2,
-}
 
 
 

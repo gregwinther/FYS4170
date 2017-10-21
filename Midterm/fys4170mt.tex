@@ -9,6 +9,8 @@
 \usepackage[]{physics}
 \usepackage[]{graphicx}
 \usepackage[]{cancel}
+\usepackage[]{tikz}
+\usepackage[]{tikz-feynman}
 
 \title[FYS4170: Take-home Exam]{Take-home Exam \\
    \hrulefill \small{ FYS4170: Quantum Field Theory }\hrulefill}
@@ -321,6 +323,30 @@ j_R^\mu &= \begin{pmatrix}
 
 
 \section{Complex Scalar Fields and ``Photons''}
+
+
+\feynmandiagram [vertical=f1 to f2] {
+	i1 -- [fermion] o -- [fermion] i2,
+	f1 -- [photon] o -- [photon] f2,
+};
+
+\feynmandiagram [vertical=a to b] { 
+ 	i1 -- [fermion] a -- [photon] i2, 
+ 	a -- [fermion] b,
+	f1 -- [photon] b -- [fermion] f2,
+};
+
+\feynmandiagram [vertical=a to b] {
+	i1 -- [fermion] a -- [photon] i2,
+	a -- [fermion] b,
+	b -- [photon] o,
+	o -- [photon] f1,
+	a -- [photon] o,
+	o -- [photon] f2,
+}
+
+
+
 
 \section{Compton Scattering}
 The expression for the spin-averaged squared matrix element can be simplified to

@@ -198,13 +198,13 @@ $\mathcal{M}$ is the matrix element of the interesting part of the $S$(cattering
 
 where $\{\vb{p}_i$ and $\{\vb{p}_f\}$ are the sets of \emph{in} and \emph{out} states, respectively. $\mathcal{M}$ is interesting because it describes the actual scattering. If the particles in question does not interact at all, $S$ is simply the identity operator - the final state will be equal to the initial state.
 
-Lastly, the infinitesimal relativistic invariant $n$-body final-state momenta is (a tongue twister) given by
+Lastly, the infinitesimal relativistic invariant $n$-body final-state momenta phase space is (a tongue twister) given by
 
 \begin{equation}
 d\Pi_n = \left(\frac{d^3p_f}{(2\pi)^3} \frac{1}{2E_f}\right) (2\pi)^4 \delta^(4).
 \end{equation}
 
-It contains both a normalising factor (????) and the four-momentum conservation factor.
+It contains both the four-momentum conservation factor and a product of infinitesimal 3-momenta of the outgoing states.
 
 \subsection*{b}
 
@@ -214,20 +214,24 @@ It contains both a normalising factor (????) and the four-momentum conservation 
 
 The invariant amplitude $\mathcal{M}$ is given by the formula
 \begin{equation}
-\bra{\vb{p}_1 \vb{p}_2 \dots} iT \ket{\vb{k}_{\mathcal{B}\vb{k}_{\mathcal{A}}}} = i \mathcal{M} (2\pi)^4 \delta^{(4)}(k_i - k_f) 
+\bra{\vb{p}_1 \vb{p}_2 \dots} iT \ket{\vb{k}_{\mathcal{B}}\vb{k}_{\mathcal{A}}} = i \mathcal{M} (2\pi)^4 \delta^{(4)}(k_i - k_f) 
 = \bra{f}T\left\{\text{exp}{-i\int dt H_I} \right\} \ket{i},
 \end{equation}
-where $T$ is the time-ordering operator.
+where $T$ is the time-ordering operator and $H_I$ is the interaction Hamiltonian.
 
-The general algorithm to calculate the quantity $\mathcal{M}$ from a given interaction Hamiltonian in momentum space is
-\begin{enumerate}
-\item Contract external states with internal operators.
-\item Contract remaining internal operators (propagators)
-\item Amputate diagrams (on-shell inertial momenta).
-\end{enumerate}
+The general algorithm to calculate the quantity $\mathcal{M}$ from a given interaction Hamiltonian in momentum space is as follows. First, one expands the exponential term between the bra and ket in a series of the interaction factor in the interaction Hamiltonian. The expressions of higher orders will represent interactions that are of lower probability, and we usually disregard anything above order two\footnote{At least in this course.} The couple of next step is to apply Wick's theorem, transferring the time ordering into a normal orderes sum of all possible contractions.
+
+Second, one contracts external states with external operators. These contractions represents external legs in a Feynman diagram, namely incoming or outgoing particles. 
+
+Third, contract remaining internal operators with each other, if possible.  These contractions correspond to propagators, or internal lines in a Feynman diagram.
+
+Fourth, draw Feynman diagrams. The two preceding steps is all that is necessary to do so. For each vertex, internal line (propegator) and external line, there are associated Feynman rules, or factors, which have been calculated during the development of quantum field theory over the past 60 years. The rules vary for what kind of interaction and what kind of particles we are modeling (photons, fermions, QED, $\phi^4$ etc). We now also disregard any unconnected diagrams, as these are (in our simple processes) representations of interactions with identical initial and final states i.e. does not contribute to $T$ matrix. Moreover, we \emph{amputate} the connected diagrams, for example to remove parts of a diagram with propagators connected to the same leg in a ``loop''. These parts have nothing to do with the actual interaction.
+
+Fifth, integrate over undetermined momentum (if in momentum space) and divide by symmetry factor. The symmetry factor arises from the fact that there may be several ways to draw Feynman diagrams, analogous to several ways to do the same contractions.
 
 \subsection*{b}
 
+Given the following interaction Lagrangian
 
 \section{Current Conservation and Charge of a Dirac field}
 The axial vector current is defined by
@@ -391,10 +395,6 @@ i\mathcal{M} =&
  	i1 -- [draw = none] i2,
 };
 \end{align*}
-
-
-
-
 
 \section{Compton Scattering}
 The expression for the spin-averaged squared matrix element can be simplified to

@@ -449,6 +449,12 @@ i\mathcal{M} =&
 };
 \end{align*}
 
+Evaluating the Feynman diagrams with the provided rules yields,
+
+\begin{align}
+i\mathcal{M} = 
+\end{align}
+
 \section{Compton Scattering}
 The expression for the spin-averaged squared matrix element can be simplified to
 \begin{equation}
@@ -559,6 +565,30 @@ Removing the integral signs on both sides and we land on an expression for the t
 d\Pi_2 = \frac{1}{8\pi} d\cos \theta \frac{(\omega')^2}{\omega m}.
 \end{equation}
 
+\subsection{d}
+The infinitesimal cross section is given by \autoref{eq:infinitesimal_cross_section}. Inserting $\abs{\bar{\mathcal{M}}}^2$, $d\Pi_2$, $v= 1$, $E_A = \omega$, $E_B = m$ and dividing through by $d\cos\theta$ yields
+
+\begin{align}
+\frac{d\sigma}{d\cos\theta} &= \frac{1}{4\omega m} 2e^4 \left[\frac{m\omega'}{m\omega} + \frac{m\omega}{m\omega'} + \left(1 + \frac{m^2}{m\omega} + \frac{m^2}{m\omega'} \right)^2 - 1 \right] \frac{1}{8\pi} \frac{(\omega')^2}{\omega m} \\
+		&= \frac{\pi \alpha^2}{m^2} \left(\frac{\omega'}{\omega} \right)^2 \left[\frac{\omega'}{\omega} + \frac{\omega}{\omega'} + \left( 1 + \frac{m}{\omega} + \frac{m}{\omega'}\right)^2 - 1 \right] \label{eq:finestructurehere} \\
+		&= \frac{\pi \alpha^2}{m^2} \left(\frac{\omega'}{\omega} \right)^2 \left[\frac{\omega'}{\omega} + \frac{\omega}{\omega'} + \left( 1  + m (\frac{1}{\omega} - \frac{1}{\omega'})\right)^2 - 1 \right]  \\
+		&= \frac{\pi \alpha^2}{m^2} \left(\frac{\omega'}{\omega} \right)^2 \left[\frac{\omega'}{\omega} + \frac{\omega}{\omega'} + \left( 1 - 1 + \cos\theta)\right)^2 - 1 \right] \label{eq:Comptoninserted} \\
+		&= \frac{\pi \alpha^2}{m^2} \left(\frac{\omega'}{\omega} \right)^2 \left[\frac{\omega'}{\omega} + \frac{\omega}{\omega'} + \cos^2\theta - 1 \right] \\
+		&= \frac{\pi \alpha^2}{m^2} \left(\frac{\omega'}{\omega} \right)^2 \left[\frac{\omega'}{\omega} + \frac{\omega}{\omega'} - \sin^2\theta \right] \label{eq:crossers},
+\end{align}
+
+where the fine-structure constant $\alpha = \frac{e^2}{4\pi}$ has been inserted in \autoref{eq:finestructurehere} and Compton's formula for shift in photon wavelength\footnote{$\frac{1}{\omega'} - \frac{1}{\omega} = \frac{1}{m} (1 - \cos\theta)$.} has been inserted in \autoref{eq:Comptoninserted}. In the relativistic limit, where $\omega \to 0$, we see from \autoref{eq:omegaprime} that $\omega' / \omega \to 1$. \autoref{eq:crossers} becomes
+\begin{equation}
+\frac{d\sigma}{d\cos\theta} = \frac{\pi\alpha^2}{m^2}(1 + \cos^2\theta).
+\end{equation}
+
+The full cross section is found by integration
+\begin{align}
+\int d\sigma = \sigma &= \int_{-1}^1 \frac{\pi\alpha^2}{m^2} (1 + \cos^2 \theta) d\cos\theta 
+= \int_{-1}^1 \frac{\pi\alpha^2}{m^2} (1 + u^2) du = \frac{\pi\alpha^2}{m^2}\left[u + \frac{1}{3}u^3 \right]_{-1}^1 \\
+	&= \frac{\pi\alpha^2}{m^2} \left(1 + \frac{1}{3} + 1 + \frac{1}{3} \right) \frac{8\pi\alpha^2}{3m^2},
+\end{align}
+which is the Thompson cross-section for scattering of classical electromagnetic radiation by a free electron.
 
 
 \end{document}

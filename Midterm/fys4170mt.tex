@@ -344,7 +344,7 @@ j_L^\mu &= \begin{pmatrix}
 \bar{\psi}_L & \bar{\psi_R}
 \end{pmatrix}\gamma^\mu \left(\frac{1 - \gamma^5}{2}\right) 
 \begin{pmatrix}
-\psi_L \\
+\psi_L, \\
 \psi_R
 \end{pmatrix} = \bar{\psi}_L \gamma^\mu \psi_L \\
 j_R^\mu &= \begin{pmatrix}
@@ -353,9 +353,31 @@ j_R^\mu &= \begin{pmatrix}
 \begin{pmatrix}
 \psi_L \\
 \psi_R
-\end{pmatrix} = \bar{\psi}_R \gamma^\mu \psi_R
+\end{pmatrix} = \bar{\psi}_R \gamma^\mu \psi_R.
 \end{align}
 
+Computing the charge in parts, the left- and right-handed fields separately, gives the same result
+\begin{align*}
+Q_A &= Q_R - Q_L = \int d^3x j_R^0 - int d^3x j_L^0 = \int d^3x \bar{\psi}_R\gamma^0\psi_R - \int d^3x \bar{\psi}_L\gamma^0\psi_L \\
+	&= \int d^3x \psi^\dagger_R\gamma^0\psi_R - \int d^3x \psi^\dagger_L\gamma^0\psi_L 
+	  = \int d^3x \left[\psi^\dagger\left(\frac{1 + \gamma^5}{2} \right) \psi - \psi^\dagger\left(\frac{1 - \gamma^5}{2} \right) \psi  \right] \\
+	&= \frac{1}{2} \int d^3x \left[\psi^\dagger 1 \psi - \psi^\dagger 1 \psi + 2\psi^\dagger \gamma^5 \psi \right] 
+	   = \int d^3x \psi^\dagger \gamma^5 \psi.
+\end{align*}
+
+The axial charge becomes
+\begin{align}
+Q_A 	&= \int d^3x \psi^\dagger \gamma^5 \psi \\
+ 		&= \int d^3 \int \frac{d^3p}{(2\pi)^3} \int \frac{d^3q}{(2\pi)^2} \frac{1}{2\sqrt{E_{\vb{p}}} E_{\vb{q}}} \\
+ 		 &\times \sum_s \left(a_{\vb{p}}^su^s(p)e^{-ip\cdot x} + b_{\vb{p}}^{s\dagger}v^s(p) e^{ip\cdot x}\right)^\dagger
+ 		 \gamma^5
+ 		 			 \sum_r\left(a_{\vb{q}}^r u^r(q) e^{-ip\cdot x} + b_{\vb{q}}^{r\dagger}v^r(q)e^{iq\cdot x} \right) \nonumber \\
+ 		&= \int d^3 \int \frac{d^3p}{(2\pi)^3} \int \frac{d^3q}{(2\pi)^2} \frac{1}{2\sqrt{E_{\vb{p}}} E_{\vb{q}}} 
+ 		\sum_{rs} \Big( a_{\vb{p}}^{s\dagger}a_{q}^{s\dagger} u^{s\dagger}(p) \gamma^5 u^r(q) e^{ix\cdot (p-q)}\\
+ 		&\ + b_{\vb{p}}^s b_{\vb{q}}^{r\dagger}v^{s\dagger}(p) \gamma^5v^r(q)e^{ix\cdot (q-p)}
+ 		     + a_{\vb{p}}^{s\dagger}b_{\vb{q}}^{r\dagger} u^{s\dagger}(p) \gamma^5 v^r(q) e^{ix\cdot(p+q)}
+ 		     + b_{\vb{p}}^s a_{\vb{q}}^r v^{s\dagger}(p) \gamma^5 u^r(q) e^{ix\cdot (p+q)}\Big) \nonumber 
+\end{align}
 
 \section{Complex Scalar Fields and ``Photons''}
 

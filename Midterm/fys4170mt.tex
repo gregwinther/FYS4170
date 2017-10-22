@@ -201,7 +201,8 @@ where $\{\vb{p}_i$ and $\{\vb{p}_f\}$ are the sets of \emph{in} and \emph{out} s
 Lastly, the infinitesimal relativistic invariant $n$-body final-state momenta phase space is (a tongue twister) given by
 
 \begin{equation}
-d\Pi_n = \left(\frac{d^3p_f}{(2\pi)^3} \frac{1}{2E_f}\right) (2\pi)^4 \delta^(4).
+\label{eq:phasespace}
+d\Pi_n = \left(\frac{d^3p_f}{(2\pi)^3} \frac{1}{2E_f}\right) (2\pi)^4 \delta^{(4)}(\Sigma p_i - \Sigma p_f).
 \end{equation}
 
 It contains both the four-momentum conservation factor and a product of infinitesimal 3-momenta of the outgoing states.
@@ -247,7 +248,7 @@ The first order term of the series expansion of the exponential in $\kappa$ incl
 
 \begin{equation}
 \wick{
-\langle \c1 p_a \c2 p_b \c3 p_b| \c1 \phi_a \c4 \phi_a \c2 \phi_b \c3 \phi_b \c5 \phi_b \c6 \phi_b| \c5 p_b \c6 p_b \c4 p_a \rangle
+\langle \c1 \phi_a \c2 \phi_b \c3 \phi_b| \c1 \phi_a \c4 \phi_a \c2 \phi_b \c3 \phi_b \c5 \phi_b \c6 \phi_b| \c5 \phi_b \c6 \phi_b \c4 \phi_a \rangle
 } = 
 \feynmandiagram[baseline=(a.base), horizontal=a to o] {
                             a -- [fermion] o -- [fermion] b,
@@ -458,8 +459,8 @@ The expression for the spin-averaged squared matrix element can be simplified to
 
 In the lab frame, where the electron is initially at rest, we have the following momenta:
 \begin{align}
-k  &= (\omega, \omega\hat{z}) \\
-p  &= (m, \vb{0}) \\
+k  &= (\omega, 0, 0, \omega) \\
+p  &= (m, 0, 0, 0) \\
 k' &= (\omega', \omega' \sin \theta, 0, \omega' \cos \theta) \\
 p' &= (E', \vb{p}')
 \end{align}
@@ -481,8 +482,83 @@ employing \autoref{eq:dot1} and \autoref{eq:dot2}, computing $k\cdot k'$ and tha
        0 &= m\omega -m\omega' - \omega\omega' + \omega\omega'\cos \theta \nonumber \\
        0 &=m\omega - \omega'(m + \omega - \omega\cos\theta) \nonumber \\
        \omega' &= \frac{m\omega}{m + \omega - \omega\cos\theta} \nonumber \\
-       \omega' &= \frac{\omega}{1 + \frac{m}{\omega}(1-\cos\theta)}
+       \omega' &= \frac{\omega}{1 + \frac{m}{\omega}(1-\cos\theta)} \label{eq:omegaprime}
 \end{align}
+
+\subsection{c}
+The $n$-body relativistically invariant phase space is given by \autoref{eq:phasespace}. The two-body integrated version version of this is
+
+\begin{equation}
+\int d\Pi_2 = \int \frac{d^3p' d^3k'}{(2\pi)^6} \frac{1}{2E'2\omega'} (2\pi)^4 \delta^{(4)}(k' + p' - k - p).
+\end{equation}
+
+First we want to make a variable change, $dk' = (w')^2\sin\theta d\omega' d\theta d\varphi$, where we insert the infinitesimal solid angle $d\Omega = \sin\theta d\theta d\varphi$, which gives $d^3k = (\omega')^2 d\omega' d\Omega$. Inserting this, and using conservation of momentum ($k' + p' = k + p \rightarrow -p' = k' - k -p$)  in the spatial part of the Dirac delta and crossing out equal factors in the numerator and denominator yields
+
+\begin{align}
+\int d\Pi_2 &= \int \frac{d^3p'}{(2\pi)^3} \frac{(\omega')^2d\omega' d\Omega}{4\omega' E'} \delta^{(3)} (2\vb{p}') \delta (\omega' + E' - \omega -m) \\
+		&= \int \frac{(\omega')^2 d\omega' d\Omega}{(2\pi)^3} \frac{1}{4\omega' E'} \delta (\omega' + E' - \omega - m) .
+\end{align}
+
+Now we want to do something with the solid angle. Consider $ d\Omega = \sin\theta d\theta d\varphi$ and notice that there are no $\varphi$ in our expression. We can therefore evaluate the integral, $\int d\phi = 2\pi$. Moreover, $\int_0^\pi \sin\theta d\theta = \int_{-1}^1 -d\cos\theta = \int_1^{-1} d\cos\theta$ allowing the change $\sin\theta d\theta = d\cos\theta$. This should now leave us with
+
+\begin{equation}
+\int d\Pi_2 = \int \frac{d\omega' d\cos\theta}{2\pi} \frac{1}{4E'} \delta (\omega' + E' - \omega -m).
+\end{equation}
+
+Now to get rid of the remaining Dirac delta. The energy-momentum relation gives
+\begin{equation}
+p'^2 = E'^2 - \abs{\vb{p}}^2 = m^2 \rightarrow E' = \sqrt{\abs{\vb{p}}^2 + m^2},
+\end{equation}
+
+where 
+
+\begin{align}
+\vb{p}'^2 &= \vb{p} + \vb{k} - \vb{k}' = \vb{0} + \omega\hat{z} - (\omega\sin\theta, 0, \omega\cos\theta) \\
+\abs{\vb{p}'}^2	&= \omega'\sin^2\theta + \omega^2 - 2\omega\omega'\cos\theta + \omega'^2\cos^2\theta \\
+						&= \omega^2 + (\omega')^2 - 2\omega\omega'\cos\theta,
+\end{align}
+
+so that
+
+\begin{equation}
+E' = \sqrt{m^2 + \omega^2 + (\omega')^2 - 2\omega\omega'\cos\theta}.
+\end{equation}
+
+This leads to yet another new expression for the phase space
+
+\begin{equation}
+\int d\Pi_2 = \int \frac{d\omega' d\cos\theta}{2\pi} \frac{1}{4E'} \delta (\omega' + \sqrt{m^2 + \omega^2 + (\omega')^2 - 2\omega\omega'\cos\theta} - \omega -m).
+\end{equation}
+
+In order to proceed we need to use this neat rule
+\begin{equation}
+\int dx f(x) \delta(g(x)) = \int dx \frac{f(x)}{\abs{g'(x)}}.
+\end{equation}
+
+Differentiating the expression inside the Dirac delta function gives us
+\begin{equation}
+\frac{\partial}{d\omega'} \left(\omega' + \sqrt{m^2 + \omega^2 + (\omega')^2 - 2\omega\omega'\cos\theta} - \omega -m \right)
+= 1 + \frac{\omega' - \omega\cos\theta}{E'}.
+\end{equation}
+
+Inserting this now gives us
+\begin{align}
+\int d\Pi_2 &= \int \frac{d\cos\theta}{2\pi} \frac{\omega'}{4E'} \frac{1}{\abs{1 + \frac{\omega' - \omega\cos\theta}{E'}}} \\
+			&= \frac{1}{8\pi} \int d\cos \theta \frac{\omega'}{E' + \omega' - \omega\cos\theta} \\
+			&= \frac{1}{8\pi} \int d\cos \theta \frac{\omega'}{m + \omega - \omega' + \omega' - \omega\cos\theta} \\
+			&= \frac{1}{8\pi} \int d\cos \theta \frac{\omega'}{m + \omega(1 - \cos\theta)}.
+\end{align}
+Finally, notice that we are not far from \autoref{eq:omegaprime} in the fraction
+\begin{align}
+\int d\Pi_2 &= \frac{1}{8\pi} \int d\cos \theta \frac{\omega'}{m\left(1 + \frac{\omega}{m}(1 - \cos\theta\right)} \\
+ 			&= \frac{1}{8\pi} \int d\cos \theta \frac{(\omega')^2}{\omega m}.
+\end{align}
+
+Removing the integral signs on both sides and we land on an expression for the two-particle final state phase space,
+\begin{equation}
+d\Pi_2 = \frac{1}{8\pi} d\cos \theta \frac{(\omega')^2}{\omega m}.
+\end{equation}
+
 
 
 \end{document}

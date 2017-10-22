@@ -214,7 +214,7 @@ It contains both the four-momentum conservation factor and a product of infinite
 
 The invariant amplitude $\mathcal{M}$ is given by the formula
 \begin{equation}
-\bra{\vb{p}_1 \vb{p}_2 \dots} iT \ket{\vb{k}_{\mathcal{B}}\vb{k}_{\mathcal{A}}} = i \mathcal{M} (2\pi)^4 \delta^{(4)}(k_i - k_f) 
+\bra{\vb{p}_1 \vb{p}_2 \dots} iT \ket{\vb{k}_{\mathcal{B}}\vb{k}_{\mathcal{A}}} = i \mathcal{M} (2\pi)^4 \delta^{(4)}(\Sigma k_i -\Sigma  k_f)
 = \bra{f}T\left\{\text{exp}{-i\int dt H_I} \right\} \ket{i},
 \end{equation}
 where $T$ is the time-ordering operator and $H_I$ is the interaction Hamiltonian.
@@ -225,13 +225,43 @@ Second, one contracts external states with external operators. These contraction
 
 Third, contract remaining internal operators with each other, if possible.  These contractions correspond to propagators, or internal lines in a Feynman diagram.
 
-Fourth, draw Feynman diagrams. The two preceding steps is all that is necessary to do so. For each vertex, internal line (propegator) and external line, there are associated Feynman rules, or factors, which have been calculated during the development of quantum field theory over the past 60 years. The rules vary for what kind of interaction and what kind of particles we are modeling (photons, fermions, QED, $\phi^4$ etc). We now also disregard any unconnected diagrams, as these are (in our simple processes) representations of interactions with identical initial and final states i.e. does not contribute to $T$ matrix. Moreover, we \emph{amputate} the connected diagrams, for example to remove parts of a diagram with propagators connected to the same leg in a ``loop''. These parts have nothing to do with the actual interaction.
+Fourth, draw Feynman diagrams. The two preceding steps is all that is necessary to do so. For each vertex, internal line (propegator) and external line, there are associated Feynman rules, or factors, which have been calculated during the development of quantum field theory over the past 60 years. The rules vary for what kind of interaction and what kind of particles we are modeling (photons, fermions, QED, $\phi^4$ etc). We now also disregard any unconnected diagrams, as these are (in our simple processes) representations of interactions with identical initial and final states i.e. does not contribute to $T$ matrix. Moreover, we \emph{amputate} the connected diagrams, for example to remove parts of a diagram with propagators connected to the same leg in a ``loop''. These parts have nothing to do with the actual interaction. This essentially enforces momentum conservation and removes the factor $(2\pi)^4 \delta^{(4)}(\Sigma k_i -\Sigma  k_f)$.
 
 Fifth, integrate over undetermined momentum (if in momentum space) and divide by symmetry factor. The symmetry factor arises from the fact that there may be several ways to draw Feynman diagrams, analogous to several ways to do the same contractions.
 
 \subsection*{b}
 
-Given the following interaction Lagrangian
+We are given the following interaction Lagrangian
+
+\begin{equation}
+\mathcal{L} \supset \mathcal{L}_{\text{Int}} = - \kappa \phi_a^2\phi_b^4.
+\end{equation}
+
+The interaction Hamiltonian is given as $H_I = -\int d^3x \mathcal{L}_i$ and we therefore have our scattering amplitude
+
+\begin{equation}
+i\mathcal{M} \hat{=} \bra{f}T \left\{\text{ext} \left(- i\int d^4x \kappa \phi_a^2\phi_b^4\right) \right\} \ket{i}.
+\end{equation}
+
+The first order term of the series expansion of the exponential in $\kappa$ including contractions is,
+
+\begin{equation}
+\wick{
+\langle \c1 p_a \c2 p_b \c3 p_b| \c1 \phi_a \c4 \phi_a \c2 \phi_b \c3 \phi_b \c5 \phi_b \c6 \phi_b| \c5 p_b \c6 p_b \c4 p_a \rangle
+} = 
+\feynmandiagram[baseline=(a.base), horizontal=a to o] {
+                            a -- [fermion] o -- [fermion] b,
+                            c -- [fermion] o -- [fermion] d,
+                            e -- [charged scalar] o -- [charged scalar] f
+                        };
+\end{equation}
+
+Above is just one of several possible Feynman diagrams describing the interactions. A vertex with six external legs as this can be drawn in $2!4!$ different ways, giving rise to the Feynman rule
+
+\begin{equation}
+-i48\kappa.
+\end{equation}
+
 
 \section{Current Conservation and Charge of a Dirac field}
 The axial vector current is defined by

@@ -247,17 +247,16 @@ i\mathcal{M} \hat{=} \bra{f}T \left\{\text{ext} \left(- i\int d^4x \kappa \phi_a
 The first order term of the series expansion of the exponential in $\kappa$ including contractions is,
 
 \begin{equation}
-\wick{
-\langle \c1 \phi_a \c2 \phi_b \c3 \phi_b| \c1 \phi_a \c4 \phi_a \c2 \phi_b \c3 \phi_b \c5 \phi_b \c6 \phi_b| \c5 \phi_b \c6 \phi_b \c4 \phi_a \rangle
-} = 
+\wick{\langle \c1{\vb{p}_1} \c2{\vb{p}_2} \c3{\vb{p}_3}  \c4{\vb{p}_4} | \c5{\phi_a} \c6{\phi_a} \c1 \phi_b \c2 \phi_b \c3 \phi_b \c4 \phi_b | \c5{\vb{k}_1} \c6{\vb{k}_2} \rangle} 
+= 
 \feynmandiagram[baseline=(a.base), horizontal=a to o] {
                             a -- [fermion] o -- [fermion] b,
                             c -- [fermion] o -- [fermion] d,
                             e -- [charged scalar] o -- [charged scalar] f
-                        };
+};
 \end{equation}
 
-Above is just one of several possible Feynman diagrams describing the interactions. A vertex with six external legs as this can be drawn in $2!4!$ different ways, giving rise to the Feynman rule
+Above is just one of several possible Feynman diagrams describing the interactions. A vertex with six external legs as this can be drawn in $2!4!$ different ways. There are $4!$ possible ways of pairing $\phi_b$ with $\vb{p}_f$ and $2!$ possible ways of pairing $\phi_a$ with $\vb{k}_i$. This gives rise to the Feynman rule,
 
 \begin{equation}
 -i48\kappa.
@@ -449,11 +448,69 @@ i\mathcal{M} =&
 };
 \end{align*}
 
-Evaluating the Feynman diagrams with the provided rules yields,
+Evaluating the Feynman diagrams with the provided rules yields
 
 \begin{align}
-i\mathcal{M} = 
+i\mathcal{M} =& i\mathcal{M}_\text{I} + i\mathcal{M}_\text{II} + i\mathcal{M}_\text{III} \label{eq:mikkemus}\\
+	=&  2ig^2 g^{\mu\nu} \epsilon_\mu^*\epsilon_\nu^* \nonumber \\
+	 &+ (-ig (p_1 + p_1 - k_1))^\mu \frac{i}{(p_1 + k_1)^2 + m^2} (-ig(p_1 - k_1 - p_2)^\nu \epsilon_\mu^*(k_1)\epsilon_\nu^*(k_2) \nonumber\\
+	 &+ (-ig (p_1 + p_1 - k_2))^\mu \frac{i}{(p_1 + k_2)^2 + m^2} (-ig(p_1 - k_2 - p_2)^\nu \epsilon_\mu^*(k_2)\epsilon_\nu^*(k_1). \nonumber
 \end{align}
+
+These equations can be simplified by employing conservation of momentum,
+
+\begin{align}
+i\mathcal{M}_{\text{I}} \ \ &= 2ig^2 g^{\mu\nu} \epsilon_\mu^*(k_1)\epsilon_\nu^* \\
+i\mathcal{M}_{\text{II}} \  &= i(-ig)^2 \frac{(2p_1 - k_1)^\mu (k_2 - 2p_2)^\nu}{(p_1 - k_1)^2 - m^2} \epsilon_\mu^*(k_1)\epsilon_\nu^*(k_2) \\
+i\mathcal{M}_{\text{III}}   &= i(-ig)^2 \frac{(2p_1 - k_2)^\mu (k_1 - 2p_2)^\nu}{(p_1 - k_2)^2 - m^2} \epsilon_\mu^*(k_2)\epsilon_\nu^*(k_1).
+\end{align}
+
+By definition, the product of the photon polarization vector with its related photon momentum is zero, i.e. $\epsilon_\mu^*(k_2)k_2^\mu = 0$. This simplifies two of the above expressions
+
+\begin{align}
+i\mathcal{M}_{\text{II}} \ &= 4ig^2 \frac{p_1^\mu p_2^\nu}{(p_1 - k_1)^2 - m^2}\epsilon_\mu^*(k_1) \epsilon_\nu^*(k_2) \\
+i\mathcal{M}_{\text{III}}  &= 4ig^2 \frac{p_1^\mu p_2^\nu}{(p_1 - k_2)^2 - m^2}\epsilon_\mu^*(k_2) \epsilon_\nu^*(k_1),
+\end{align}
+
+in turn concatenating \autoref{eq:mikkemus} to 
+\begin{equation}
+i\mathcal{M} = 4ig^2 \left(\frac{1}{2}g^{\mu\nu} + \frac{p_1^\mu p_2^\nu}{(p_1 - k1)^2 - m^2} + \frac{p_1^\nu p_2^\mu}{(p_1- k_2)^2 - m^2} \right) \epsilon_\mu^*(k_1) \nu^*(k_2). 
+\end{equation}
+
+Notice the index change necessary to make this work.
+
+The remainding goal of this venture is to use Ward's identity to show that we have found the correct expression for $i\mathcal{M}$. Ward's identity can be stated as 
+\begin{equation}
+p_\mu \mathcal{M}^\mu = 0,
+\end{equation}
+where $p_\mu$ is the momentum of an external photon in the interaction process, in a simple form stated as $\mathcal{M} = \epsilon_\mu \mathcal{M}^\mu$. This identity is essentially a statement of current conservation, which is a consequence of the gauge symmetry of QED\footnote{$\psi(x) \to e^{i\alpha(x)}\psi(x)$, $A_\mu \to A_\mu - \frac{1}{e}\partial_\mu \alpha(x)$.}. The amplitude vanishes when the polarization is replaced by the momentum.
+
+Replacing $\epsilon_\mu^*(k_1)$ with $k_1$, one ``diagram'' at a time gives
+\begin{align}
+k_{1\mu}\mathcal{M}_{\text{I}}^\mu \ \ &= 2g^2k_1^\nu\epsilon_\nu^*(k_2) \\
+k_{1\mu}\mathcal{M}_{\text{II}}^\mu \  &= (ig)^2\frac{(2p_1^\mu k_{1\mu} - k_1^2)(k_2^\nu\epsilon_\nu^*(k_2) - 2p_2^\nu\epsilon_\nu^*(k_2))}{k_1 - 2p_1k_1} \label{eq:didstuff1} \\
+ &= g^2(k_2\epsilon^*(k_2) - 2p_2\epsilon^*(k_2)) \nonumber,
+\end{align}
+
+wherein \autoref{eq:didstuff1} we done the following replacement, $(p_1 - k_1)^2 - m^2 = k_1^2 - 2k_1p_1 + p_1 - m^2 = k_1^2 - 2k_1p_1$. Employing a similar trick like this and making use of conservation of momentum to change variables, gives us an alternative expression for the last term,
+
+\begin{equation}
+i \mathcal{M}_{\text{III}} = i(ig)^2 \frac{(2p_2 - k_1)^\mu(k_2 - 2p_1)}{p_3^2 - 2p_3p_2} \epsilon^*_\mu(k_1) \epsilon^*_\nu(k_2).
+\end{equation}
+
+Exchanging the polarization vector with the momentum vector yields,
+\begin{align}
+k_{1\mu}\mathcal{M}_{\text{III}} &= (ig)^2 \frac{(2p_2^\mu k_{1\mu} - k_1^2)(k_2^\nu\epsilon^*_\nu(k_2) - 2p_1^\nu\epsilon^*_\nu(k_2))}{k_1^2 - 2k_1p_2} \\
+		&= g^2(k_2\epsilon^*(k_2) - 2p_1 \epsilon^*(k_2)). \nonumber
+\end{align}
+
+Finally, adding up all the terms,
+\begin{align}
+k_{1\mu}\mathcal{M}^\mu &= 2g^2k_1\epsilon^*(k_2) + g^2(k_2\epsilon^*(k_2) - 2p_2\epsilon^*(k_2)) + g^2(k_2\epsilon^*(k_2) - 2p_1\epsilon^*(k_2)) \\
+		&= 2g^2\epsilon^*(k_2) ( k_1 + k_2 - p_1 - p_2) = 0,
+\end{align}
+
+we see that we indeed have Ward's identity!
 
 \section{Compton Scattering}
 The expression for the spin-averaged squared matrix element can be simplified to
